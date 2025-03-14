@@ -11,12 +11,12 @@ from .mm_utils import process_image, process_video, process_audio,tokenizer_mult
 from .constants import NUM_FRAMES, DEFAULT_IMAGE_TOKEN, DEFAULT_VIDEO_TOKEN, MODAL_INDEX_MAP, DEFAULT_AUDIO_TOKEN
 import transformers
 
-def model_init(model_path=None, **kwargs):
+def model_init(model_path=None, config_kwargs={}, **kwargs):
     # with_face = kwargs.get('with_face', False)
     model_path = "HumanOmni_7B" if model_path is None else model_path
     model_name = get_model_name_from_path(model_path)
 
-    tokenizer, model, processor, context_len, audio_processor = load_pretrained_model(model_path, None, model_name, **kwargs)
+    tokenizer, model, processor, context_len, audio_processor = load_pretrained_model(model_path, None, model_name, config_kwargs=config_kwargs, **kwargs)
 
     if tokenizer.pad_token is None and tokenizer.unk_token is not None:
         tokenizer.pad_token = tokenizer.unk_token

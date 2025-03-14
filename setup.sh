@@ -3,6 +3,7 @@ cd src/r1-v
 pip install -e ".[dev]"
 
 # Addtional modules
+pip install opencv-python timm imageio decord python-dotenv
 # pip install wandb==0.18.3
 # pip install tensorboardx
 # pip install qwen_vl_utils torchvision
