@@ -23,12 +23,8 @@ import torch.nn as nn
 import torch.nn.functional as F
 from .projector import load_mm_projector, build_vision_projector, build_audio_projector
 from .encoder import build_vision_tower, build_audio_tower
-from ..constants import IGNORE_INDEX, NUM_FRAMES, MODAL_INDEX_MAP, IMAGE_TOKEN_PATCH, MODAL_INDEX_REMAP
-from humanomni.mm_utils import frame_sample
+from ..constants import IGNORE_INDEX, NUM_FRAMES, MODAL_INDEX_MAP, MODAL_INDEX_REMAP
 from transformers import BertModel, BertTokenizer
-import h5py
-import torch.distributed as dist
-import ipdb
 
 class SFDynamicCompressor(nn.Module):
     def __init__(self, model_args, vision_tower):
