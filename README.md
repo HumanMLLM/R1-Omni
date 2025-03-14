@@ -34,9 +34,8 @@ We chose the open-source Omni model HumanOmni-0.5B as our base model. We have op
 | `HumanOmni-0.5B`      |  [![HF](https://img.shields.io/badge/🤗-Download-yellow)](https://hf.co/StarJiaxing/HumanOmni-0.5B) | [![MS](https://img.shields.io/badge/ModelScope-Download-blue)](https://modelscope.cn/models/iic/HumanOmni-0.5B) |
 | `EMER-SFT`      |  [![HF](https://img.shields.io/badge/🤗-Download-yellow)](https://hf.co/StarJiaxing/EMER-SFT-0.5B)  | [![MS](https://img.shields.io/badge/ModelScope-Download-blue)](https://modelscope.cn/models/iic/EMER-SFT-0.5B)  |
 | `MAFW-DFEW-SFT`       | [![HF](https://img.shields.io/badge/🤗-Download-yellow)](https://hf.co/StarJiaxing/MAFW-DFEW-0.5B)         | [![MS](https://img.shields.io/badge/ModelScope-Download-blue)](https://modelscope.cn/models/iic/MAFW-DFEW-0.5B)         |
-| `R1-Omni`       | [![HF](https://img.shields.io/badge/🤗-Download-yellow)](https://hf.co/StarJiaxing/R1-Omni-0.5B)         | [![MS](https://img.shields.io/badge/ModelScope-Download-blue)](https://modelscope.cn/models/iic/R1-Omni-0.5B)         |
+| `R1-Omni`       | [![HF](https://img.shields.io/badge/🤗-Download-yellow)](https://hf.co/StarJiaxing/R1-Omni-0.5B)         | [![MS](https://img.shields.io/badge/ModelScope-Download-blue)](https://modelscope.cn/models/myroot/R1-Omni-0.5B)         |
 </div>
-
 
 
 ## 🏆 Performance
