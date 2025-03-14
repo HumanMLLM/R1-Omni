@@ -76,7 +76,9 @@ class HumanOmniMetaModel:
 
         # Comment out this part of the code during training to avoid repeated initialization.
         num_branches = 3
-        bert_model = "/mnt/data/jiaxing.zjx/code/R1-V-Qwen/R1-V/bert-base-uncased"
+        bert_model = os.environ.get('BERT_MODEL_PATH')
+        if bert_model is None:
+            raise ValueError("BERT_MODEL_PATH is not set, Please set BERT_MODEL_PATH in the environment variable or `.env`")
         self.bert_model =  BertModel.from_pretrained(bert_model)
         self.bert_tokenizer = BertTokenizer.from_pretrained(bert_model)
         modules = [nn.Linear(self.bert_model.config.hidden_size, 3584)]

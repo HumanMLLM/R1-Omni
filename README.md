@@ -89,37 +89,29 @@ GT:happy
 Our code is built on the R1-V framework. To set up the environment, please follow the installation instructions in the [R1-V repository](https://github.com/Deep-Agent/R1-V/)
 Nvidia-driver，535.54，torch 2.5.1+cu124，torchvision 0.20.1+cu124 torchaudio 2.5.1+cu124transformers 4.49.0， flash_attn 2.7.4 
 
+```bash
+bash setup.sh
+```
 
 ## 🔍 Inference
 Our inference code is based on the implementation from **HumanOmni**. To ensure the model runs inference smoothly, follow these steps:
 
-1. **Download the Required Models**：
+#### **Download the Required Models**：
    - [siglip-224](https://huggingface.co/google/siglip-base-patch16-224).
    - [whisper-large-v3](https://huggingface.co/openai/whisper-large-v3).
    - [bert-base-uncased](https://huggingface.co/google-bert/bert-base-uncased)
 
-2. **Update the Configuration File**：
-   - In the directory where you downloaded the R1-Omni model, locate the config.json file.
-   - Update the paths on line 23 and line 31 to point to the local folders where you saved the models.
-   - Update the path on line 21 in inferece.py to point to the local folder where you saved the bert-base-uncased.
-
-
-#### Example: Updating config.json and inference.py
-If you saved the models to the following local paths:：
-- `/path/to/local/models/siglip-base-patch16-224`
-- `/path/to/local/models/whisper-large-v3`
-- `/path/to/local/models/bert_base_uncased`
-
-Update the relevant lines in config.json as follows：
-```json
- "mm_audio_tower": "/path/to/local/models/whisper-large-v3",
- "mm_vision_tower": "/path/to/local/models/siglip-base-patch16-224"
+#### **Create `.env` file**：
+In the project root directory, create a file named `.env` and add the following lines:
+```bash
+R1-OMNI_MODEL_PATH="/path/to/models/R1-Omni-0.5B"
+BERT_MODEL_PATH="/path/to/models/bert-base-uncased"
+MM_AUDIO_TOWER_MODEL_PATH="/path/to/models/whisper-large-v3"
+MM_VISION_TOWER_MODEL_PATH="/path/to/models/siglip-base-patch16-224"
 ```
-Update the relevant line in inference.py as follows：
-```
-  bert_model = "/path/to/local/models/bert_base_uncased"
-```
+NOTE: You shoule **modify** the paths to point to the locations where you saved the models.
 
+#### Inference
 We provide inference.py for singe video inference. 
 ```
 python inference.py --modal video_audio \
