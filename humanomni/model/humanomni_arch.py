@@ -23,12 +23,8 @@ import torch.nn as nn
 import torch.nn.functional as F
 from .projector import load_mm_projector, build_vision_projector, build_audio_projector
 from .encoder import build_vision_tower, build_audio_tower
-from ..constants import IGNORE_INDEX, NUM_FRAMES, MODAL_INDEX_MAP, IMAGE_TOKEN_PATCH, MODAL_INDEX_REMAP
-from humanomni.mm_utils import frame_sample
+from ..constants import IGNORE_INDEX, NUM_FRAMES, MODAL_INDEX_MAP, MODAL_INDEX_REMAP
 from transformers import BertModel, BertTokenizer
-import h5py
-import torch.distributed as dist
-import ipdb
 
 class SFDynamicCompressor(nn.Module):
     def __init__(self, model_args, vision_tower):
@@ -80,7 +76,9 @@ class HumanOmniMetaModel:
 
         # Comment out this part of the code during training to avoid repeated initialization.
         num_branches = 3
-        bert_model = "/mnt/data/jiaxing.zjx/code/R1-V-Qwen/R1-V/bert-base-uncased"
+        bert_model = os.environ.get('BERT_MODEL_PATH')
+        if bert_model is None:
+            raise ValueError("BERT_MODEL_PATH is not set, Please set BERT_MODEL_PATH in the environment variable or `.env`")
         self.bert_model =  BertModel.from_pretrained(bert_model)
         self.bert_tokenizer = BertTokenizer.from_pretrained(bert_model)
         modules = [nn.Linear(self.bert_model.config.hidden_size, 3584)]
