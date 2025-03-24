@@ -35,7 +35,7 @@ VLLMConfigs = {
 }
 
 
-def load_pretrained_model(model_path, model_base, model_name, load_8bit=False, load_4bit=False, device_map="auto", device="cuda", use_flash_attn=False, **kwargs):
+def load_pretrained_model(model_path, model_base, model_name, load_8bit=False, load_4bit=False, device_map="auto", device="cuda", use_flash_attn=False, config_kwargs={}, **kwargs):
     if 'token' in kwargs:
         token = kwargs['token']
     else:
@@ -63,7 +63,7 @@ def load_pretrained_model(model_path, model_base, model_name, load_8bit=False, l
     if use_flash_attn:
         kwargs['attn_implementation'] = 'flash_attention_2'
 
-    config = AutoConfig.from_pretrained(model_path)
+    config = AutoConfig.from_pretrained(model_path, **config_kwargs)
 
     # judge model type
     model_type = config.model_type
